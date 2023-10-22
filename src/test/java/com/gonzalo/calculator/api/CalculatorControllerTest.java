@@ -1,5 +1,6 @@
 package com.gonzalo.calculator.api;
 
+import com.gonzalo.calculator.service.CalculatorService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +94,8 @@ class CalculatorControllerTest {
 
         ResultActions result = calculate(ADD, firstOperand, secondOperand);
         result.andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.equalTo(expectedResult)));
+                .andExpect(jsonPath("$", Matchers.equalTo(expectedResult.intValue())));
+
     }
 
     @Test
@@ -106,7 +108,7 @@ class CalculatorControllerTest {
 
         ResultActions result = calculate(SUBTRACT, firstOperand, secondOperand);
         result.andExpect(status().isOk())
-                .andExpect(jsonPath("$", Matchers.equalTo(expectedResult)));
+                .andExpect(jsonPath("$", Matchers.equalTo(expectedResult.intValue())));
     }
 
     private void whenCalculateIsCalledThenReturn(BigDecimal expectedResult) {
