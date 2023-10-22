@@ -5,6 +5,7 @@ import com.gonzalo.calculator.model.OperationType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -21,7 +22,7 @@ class CalculatorServiceTest {
     @InjectMocks
     private CalculatorServiceImpl service;
 
-    @InjectMocks
+    @Mock
     private TracerClient tracerClient;
 
     @Test
