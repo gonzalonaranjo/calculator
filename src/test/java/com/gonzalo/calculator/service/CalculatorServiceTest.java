@@ -1,5 +1,6 @@
 package com.gonzalo.calculator.service;
 
+import com.gonzalo.calculator.api.model.response.ResultDto;
 import com.gonzalo.calculator.client.TracerClient;
 import com.gonzalo.calculator.factory.Operation;
 import com.gonzalo.calculator.factory.OperationFactory;
@@ -39,9 +40,9 @@ class CalculatorServiceTest {
         whenGetOperationIsCalledThenReturn(expectedResult);
         doNothingWhenTracerIsCalled();
 
-        BigDecimal result = service.calculate(OperationType.ADD, BigDecimal.TEN, BigDecimal.TEN);
+        ResultDto result = service.calculate(OperationType.ADD, BigDecimal.TEN, BigDecimal.TEN);
 
-        assertAndVerifyResult(expectedResult, result);
+       assertAndVerifyResult(generateResultDto(expectedResult), result);
     }
 
     @Test
@@ -51,9 +52,9 @@ class CalculatorServiceTest {
         whenGetOperationIsCalledThenReturn(five);
         doNothingWhenTracerIsCalled();
 
-        BigDecimal result = service.calculate(OperationType.SUBTRACT, BigDecimal.TEN, five);
+        ResultDto result = service.calculate(OperationType.SUBTRACT, BigDecimal.TEN, five);
 
-        assertAndVerifyResult(five, result);
+        assertAndVerifyResult(generateResultDto(five), result);
     }
 
     private void whenGetOperationIsCalledThenReturn(BigDecimal expected) {
@@ -65,9 +66,15 @@ class CalculatorServiceTest {
         Mockito.doNothing().when(tracerClient).trace(any());
     }
 
-    private void assertAndVerifyResult(BigDecimal expectedResult, BigDecimal result) {
+    private void assertAndVerifyResult(ResultDto expectedResult, ResultDto result) {
         assertThat(result)
                 .isEqualTo(expectedResult);
-        verify(tracerClient, times(1)).trace(result);
+        verify(tracerClient, times(1)).trace(result.result());
+    }
+
+    private ResultDto generateResultDto(BigDecimal value) {
+        return ResultDto.builder()
+                .result(value)
+                .build();
     }
 }

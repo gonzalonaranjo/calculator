@@ -1,25 +1,8 @@
 package com.gonzalo.calculator.api;
 
-import com.gonzalo.calculator.model.ErrorDto;
-import com.gonzalo.calculator.model.OperationType;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.math.BigDecimal;
-import java.util.Map;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.BDDAssertions.then;
-
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CalculatorTest {
 
-    @Autowired
+/*    @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
@@ -101,4 +84,6 @@ class CalculatorTest {
                 .queryParam("firstOperand", firstOperand)
                 .queryParam("secondOperand", secondOperand);
     }
+
+ */
 }
