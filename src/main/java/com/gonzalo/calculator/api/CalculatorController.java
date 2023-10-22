@@ -1,5 +1,6 @@
 package com.gonzalo.calculator.api;
 
+import com.gonzalo.calculator.api.model.response.ResultDto;
 import com.gonzalo.calculator.model.ErrorDto;
 import com.gonzalo.calculator.model.OperationType;
 import com.gonzalo.calculator.service.CalculatorService;
@@ -44,9 +45,9 @@ public class CalculatorController {
             )
     })
     @GetMapping(value = "{operationType}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<BigDecimal> calculate(@PathVariable OperationType operationType,
-                                            @Valid @RequestParam @NotNull BigDecimal firstOperand,
-                                            @Valid @RequestParam @NotNull BigDecimal secondOperand) {
+    public ResponseEntity<ResultDto> calculate(@PathVariable OperationType operationType,
+                                               @Valid @RequestParam @NotNull BigDecimal firstOperand,
+                                               @Valid @RequestParam @NotNull BigDecimal secondOperand) {
 
         return ResponseEntity.ok(service.calculate(operationType, firstOperand, secondOperand));
     }
