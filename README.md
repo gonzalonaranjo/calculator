@@ -6,12 +6,11 @@ This microservice handles requests for performing arithmetic calculations throug
 
 Perform a specific arithmetic operation with two operands and return the result.
 
-- **Route:** `/api/calculator/calculate`
+- **Route:** `/api/v1/calculator`
 - **Method:** GET
-
+### Path Variable
+- `operationType` (string): The type of operation to perform (e.g., "ADD" for addition, "SUBTRACT" for subtraction).
 #### Request Parameters
-
-- `operation` (string): The type of operation to perform (e.g., "ADD" for addition, "SUBTRACT" for subtraction).
 - `firstOperand` (number): The first operand.
 - `secondOperand` (number): The second operand.
 
