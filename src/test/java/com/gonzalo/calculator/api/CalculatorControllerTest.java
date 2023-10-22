@@ -2,6 +2,7 @@ package com.gonzalo.calculator.api;
 
 import com.gonzalo.calculator.service.CalculatorService;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -52,7 +53,7 @@ class CalculatorControllerTest {
 
         result.andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.propertyName", Matchers.equalTo("firstOperand")))
-                .andExpect(jsonPath("$.value", Matchers.is(null)));
+                .andExpect(jsonPath("$.value").value(IsNull.nullValue()));
     }
 
     @Test
@@ -71,7 +72,7 @@ class CalculatorControllerTest {
 
         result.andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.propertyName", Matchers.equalTo("secondOperand")))
-                .andExpect(jsonPath("$.value", Matchers.is(null)));
+                .andExpect(jsonPath("$.value").value(IsNull.nullValue()));
     }
 
     @Test
