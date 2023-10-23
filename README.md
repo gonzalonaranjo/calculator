@@ -51,10 +51,10 @@ Creating the jar:
         curl -X 'GET' \
         'http://localhost:8080/api/v1/calculator/ADD?firstOperand=1&secondOperand=3' \
         -H 'accept: application/json'
-    - SUBTRACT: http://localhost:8080/api/v1/calculator/SUBTRACT?firstOperand=1&secondOperand=3
-          curl -X 'GET' \
-          'http://localhost:8080/api/v1/calculator/SUBTRACT?firstOperand=1&secondOperand=3' \
-          -H 'accept: application/json'
+  - SUBTRACT: http://localhost:8080/api/v1/calculator/SUBTRACT?firstOperand=1&secondOperand=3
+        curl -X 'GET' \
+        'http://localhost:8080/api/v1/calculator/SUBTRACT?firstOperand=1&secondOperand=3' \
+        -H 'accept: application/json'
 
 ## Related links
 The server must be running to see it

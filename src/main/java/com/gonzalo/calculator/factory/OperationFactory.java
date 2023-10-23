@@ -5,15 +5,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Set;
 
 @Component
 public class OperationFactory {
 
     private final Map<OperationType, Operation> operationMap = new EnumMap<>(OperationType.class);
 
-    public OperationFactory(Addition addition, Subtraction subtraction) {
-        operationMap.put(OperationType.ADD, addition);
-        operationMap.put(OperationType.SUBTRACT, subtraction);
+    public OperationFactory(Set<Operation> operations) {
+        for(Operation operation : operations) {
+            operationMap.put(operation.getType(), operation);
+        }
     }
 
     public Operation getOperation(OperationType type) {
