@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Set;
 
-import static com.gonzalo.calculator.api.model.OperationsResultDto.getOperationDtoSet;
+import static com.gonzalo.calculator.api.model.OperationsDto.getOperationDtoSet;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(MockitoExtension.class)

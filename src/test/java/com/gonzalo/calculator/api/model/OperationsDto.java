@@ -5,9 +5,9 @@ import com.gonzalo.calculator.model.OperationType;
 
 import java.util.Set;
 
-public class OperationsResultDto {
+public class OperationsDto {
     
-    public static Set<OperationDto> getOperationDtoList() {
+    public static Set<OperationDto> getOperationDtoSet() {
         return Set.of(
           OperationDto.builder()
                   .operation(OperationType.ADD.name())
