@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,7 +19,7 @@ public class OperationController {
     private final OperationService service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<OperationDto>> getOperations() {
+    public ResponseEntity<Set<OperationDto>> getOperations() {
         return ResponseEntity.ok(service.getOperations());
     }
 }

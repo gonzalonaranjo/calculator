@@ -10,8 +10,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.util.Set;
 
+import static com.gonzalo.calculator.api.model.OperationsResultDto.getOperationDtoSet;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -26,21 +27,14 @@ class OperationControllerTest {
 
     @Test
     void getOperationsReturnsAllOperationList() {
-        List<OperationDto> expectedResult = getOperationDto();
+        Set<OperationDto> expectedResult = getOperationDtoSet();
 
         when(service.getOperations()).thenReturn(expectedResult);
 
-        ResponseEntity<List<OperationDto>> result = controller.getOperations();
+        ResponseEntity<Set<OperationDto>> result = controller.getOperations();
 
         assertThat(result)
                 .extracting(ResponseEntity::getStatusCode, ResponseEntity::getBody)
                 .containsExactly(HttpStatus.OK, expectedResult);
-    }
-
-    private List<OperationDto> getOperationDto() {
-        return List.of(
-                OperationDto.builder().build(),
-                OperationDto.builder().build()
-        );
     }
 }
