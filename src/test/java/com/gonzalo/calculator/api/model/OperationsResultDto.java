@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class OperationsResultDto {
     
-    public static Set<OperationDto> getOperationDtoSet() {
+    public static Set<OperationDto> getOperationDtoList() {
         return Set.of(
           OperationDto.builder()
                   .operation(OperationType.ADD.name())

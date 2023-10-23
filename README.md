@@ -86,6 +86,12 @@ The application will run in 8080 port, if it is used you can change it in:
         'http://localhost:8080/api/v1/calculator/SUBTRACT?firstOperand=1&secondOperand=3' \
         -H 'accept: application/json'
 
+- operations: 
+  - http://localhost:8080/api/v1/operations
+    curl -X 'GET' \
+    'http://localhost:8080/api/v1/operations' \
+    -H 'accept: application/json'
+
 ## Swagger
 The server must be running to see it
 - [Dev API](http://localhost:8080/swagger-ui/index.html#/calculator-service/calculate)

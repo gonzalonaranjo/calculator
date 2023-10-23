@@ -33,7 +33,11 @@ public class CalculatorController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "Success"
+                    description = "Success",
+                    content = @Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ResultDto.class)
+                    )
             ),
             @ApiResponse(
                     responseCode = "400",
