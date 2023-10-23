@@ -15,6 +15,12 @@ Perform a specific arithmetic operation with two operands and return the result.
 - `firstOperand` (number): The first operand.
 - `secondOperand` (number): The second operand.
 
+## Operations
+Retrieve all the operations supported by the calculator microservice
+
+- **Route:** `/api/v1/operations`
+- **Method:** GET
+
 # Technology stack used
 
 stack used: 

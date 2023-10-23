@@ -1,8 +1,6 @@
 package com.gonzalo.calculator.api;
 
 import com.gonzalo.calculator.api.model.response.OperationDto;
-import com.gonzalo.calculator.api.model.response.ResultDto;
-import com.gonzalo.calculator.model.OperationType;
 import com.gonzalo.calculator.service.OperationService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
