@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Set;
 
 import static com.gonzalo.calculator.api.model.OperationsResultDto.getOperationDtoSet;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class OperationServiceTest {
@@ -17,7 +18,7 @@ class OperationServiceTest {
     private OperationServiceImpl service;
 
     @Test
-    void getOperationsReturnsAllOperationList() {
+    void getOperationsReturnsAllOperationSet() {
         Set<OperationDto> operations = getOperationDtoSet();
 
         Set<OperationDto> result = service.getOperations();
