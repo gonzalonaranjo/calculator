@@ -2,7 +2,6 @@ package com.gonzalo.calculator.api;
 
 import com.gonzalo.calculator.api.model.response.ResultDto;
 import com.gonzalo.calculator.model.ErrorDto;
-import com.gonzalo.calculator.model.OperationType;
 import com.gonzalo.calculator.service.CalculatorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -49,7 +48,7 @@ public class CalculatorController {
             )
     })
     @GetMapping(value = "{operationType}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ResultDto> calculate(@PathVariable OperationType operationType,
+    public ResponseEntity<ResultDto> calculate(@PathVariable String operationType,
                                                @Valid @RequestParam @NotNull BigDecimal firstOperand,
                                                @Valid @RequestParam @NotNull BigDecimal secondOperand) {
 

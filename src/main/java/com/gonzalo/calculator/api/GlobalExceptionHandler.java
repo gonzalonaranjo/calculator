@@ -1,6 +1,7 @@
 package com.gonzalo.calculator.api;
 
 import com.gonzalo.calculator.model.ErrorDto;
+import com.gonzalo.calculator.model.UnsupportedTypeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -23,6 +24,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public ResponseEntity<ErrorDto> handleMissingParameterException(MissingServletRequestParameterException ex) {
         return generateErrorResponse(ex.getMessage(), ex.getParameterName());
+    }
+
+    @ExceptionHandler(value = UnsupportedTypeException.class)
+    public ResponseEntity<ErrorDto> handleUnsupportedTypeException(UnsupportedTypeException exception) {
+        return generateErrorResponse(exception.getMessage(), exception.getParameter());
     }
 
     private ResponseEntity<ErrorDto> generateErrorResponse(String message, String propertyName) {

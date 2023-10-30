@@ -1,25 +1,29 @@
 package com.gonzalo.calculator.service;
 
 import com.gonzalo.calculator.api.model.response.OperationDto;
-import com.gonzalo.calculator.model.OperationType;
+import com.gonzalo.calculator.factory.OperationFactory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class OperationServiceImpl implements OperationService {
+
+    private final OperationFactory factory;
+
     @Override
     public Set<OperationDto> getOperations() {
-        return Arrays.stream(OperationType.values())
+        return factory.getOperationTypes().stream()
                 .map(this::mapToOperationDto)
                 .collect(Collectors.toUnmodifiableSet());
     }
 
-    private OperationDto mapToOperationDto(OperationType operationType) {
+    private OperationDto mapToOperationDto(String operationType) {
         return OperationDto.builder()
-                .operation(operationType.name())
+                .operation(operationType)
                 .build();
     }
 }
