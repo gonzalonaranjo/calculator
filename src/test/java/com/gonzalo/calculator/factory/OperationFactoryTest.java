@@ -1,6 +1,5 @@
 package com.gonzalo.calculator.factory;
 
-import com.gonzalo.calculator.model.OperationType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,8 +8,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Set;
 
+import static com.gonzalo.calculator.api.model.OperationsDto.ADD;
+import static com.gonzalo.calculator.api.model.OperationsDto.SUBTRACT;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class OperationFactoryTest {
@@ -25,8 +25,6 @@ class OperationFactoryTest {
 
     @BeforeEach
     void setUp() {
-        when(addition.getType()).thenReturn(OperationType.ADD);
-        when(subtraction.getType()).thenReturn(OperationType.SUBTRACT);
         Set<Operation> operations = Set.of(addition, subtraction);
         operationFactory = new OperationFactory(operations);
     }
@@ -34,7 +32,7 @@ class OperationFactoryTest {
     @Test
     void getADDTypeReturnsAdditionInstance() {
 
-        Operation operation = operationFactory.getOperation(OperationType.ADD);
+        Operation operation = operationFactory.getOperation(ADD);
 
         assertThat(operation)
                 .isEqualTo(addition);
@@ -43,9 +41,20 @@ class OperationFactoryTest {
     @Test
     void getSubtractTypeReturnsSubtractionInstance() {
 
-        Operation operation = operationFactory.getOperation(OperationType.SUBTRACT);
+        Operation operation = operationFactory.getOperation(SUBTRACT);
 
         assertThat(operation)
                 .isEqualTo(subtraction);
+    }
+
+    @Test
+    void getOperationTypesReturnsAllOperationTypesInTheCalculator() {
+
+        Set<String> expectedOperations = Set.of(ADD, SUBTRACT);
+
+        Set<String> operationSet = operationFactory.getOperationTypes();
+
+        assertThat(expectedOperations)
+                .isEqualTo(operationSet);
     }
 }

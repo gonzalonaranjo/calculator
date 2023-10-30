@@ -1,7 +1,6 @@
 package com.gonzalo.calculator.api;
 
 import com.gonzalo.calculator.api.model.response.ResultDto;
-import com.gonzalo.calculator.model.OperationType;
 import com.gonzalo.calculator.service.CalculatorService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 
+import static com.gonzalo.calculator.api.model.OperationsDto.ADD;
+import static com.gonzalo.calculator.api.model.OperationsDto.SUBTRACT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -34,7 +35,7 @@ class CalculatorControllerTest {
 
         whenCalculateIsCalledThenReturn(expectedResult);
 
-        ResponseEntity<ResultDto> result = controller.calculate(OperationType.ADD, firstOperand, secondOperand);
+        ResponseEntity<ResultDto> result = controller.calculate(ADD, firstOperand, secondOperand);
 
         assertThat(result)
             .extracting(ResponseEntity::getStatusCode, ResponseEntity::getBody)
@@ -49,7 +50,7 @@ class CalculatorControllerTest {
 
         whenCalculateIsCalledThenReturn(expectedResult);
 
-        ResponseEntity<ResultDto> result = controller.calculate(OperationType.SUBTRACT, firstOperand, secondOperand);
+        ResponseEntity<ResultDto> result = controller.calculate(SUBTRACT, firstOperand, secondOperand);
 
         assertThat(result)
                 .extracting(ResponseEntity::getStatusCode, ResponseEntity::getBody)

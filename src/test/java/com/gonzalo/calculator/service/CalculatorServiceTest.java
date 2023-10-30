@@ -4,7 +4,6 @@ import com.gonzalo.calculator.api.model.response.ResultDto;
 import com.gonzalo.calculator.client.TracerClient;
 import com.gonzalo.calculator.factory.Operation;
 import com.gonzalo.calculator.factory.OperationFactory;
-import com.gonzalo.calculator.model.OperationType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,6 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 
+import static com.gonzalo.calculator.api.model.OperationsDto.ADD;
+import static com.gonzalo.calculator.api.model.OperationsDto.SUBTRACT;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -40,7 +41,7 @@ class CalculatorServiceTest {
         whenGetOperationIsCalledThenReturn(expectedResult);
         doNothingWhenTracerIsCalled();
 
-        ResultDto result = service.calculate(OperationType.ADD, BigDecimal.TEN, BigDecimal.TEN);
+        ResultDto result = service.calculate(ADD, BigDecimal.TEN, BigDecimal.TEN);
 
        assertAndVerifyResult(generateResultDto(expectedResult), result);
     }
@@ -52,7 +53,7 @@ class CalculatorServiceTest {
         whenGetOperationIsCalledThenReturn(five);
         doNothingWhenTracerIsCalled();
 
-        ResultDto result = service.calculate(OperationType.SUBTRACT, BigDecimal.TEN, five);
+        ResultDto result = service.calculate(SUBTRACT, BigDecimal.TEN, five);
 
         assertAndVerifyResult(generateResultDto(five), result);
     }
